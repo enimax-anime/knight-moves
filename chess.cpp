@@ -11,8 +11,7 @@ int main()
     // move
     Graph g = consturctGraph();
 
-    // The position of the initial and final
-    // position of the knight
+    // The initial and final position of the knight
     string fromString = "a1";
     string toString = "h6";
 
@@ -23,14 +22,14 @@ int main()
     int from = indexToNumber(fromString);
     int to = indexToNumber(toString);
 
-    // This vector is a map of what parent a index
+    // This vector is a map of what parent an index
     // must be approached from to get to the initial point
     // For example, if 'from' is 0 and 'to' is 61
     // the 61st index of this vector would have the value 51
     // the 51st index of this vector would have the value 34
     // the 34th index of this vector would have the value 17
     // the 17th index of this vector would have the value 0
-    // Since we are at out initial point, this is out shortest path
+    // Since we are at the initial point, this is our shortest path
     vector<int> result = moveFromTo(from, to, g);
 
     int currentValue = to;
