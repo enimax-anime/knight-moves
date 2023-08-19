@@ -54,7 +54,7 @@ Graph consturctGraph()
         {
             vector<int> possibleMoves = findPossibleMoves({i, j});
 
-            for (int k = 0; k < possibleMoves.size(); k++)
+            for (vector<int>::size_type k = 0; k < possibleMoves.size(); k++)
             {
                 graph.addElement(i * 8 + j, possibleMoves[k]);
             }
@@ -112,13 +112,13 @@ auto moveFromTo(int from, int to, Graph &graph)
 
     while (true)
     {
-        int currentLength = toCheck.size();
+        vector<int>::size_type currentLength = toCheck.size();
 
-        for (int i = start; i < currentLength; i++)
+        for (vector<int>::size_type i = start; i < currentLength; i++)
         {
             vector<Node> currentPlacement = graph.getElements(toCheck[i].value);
 
-            for (int j = 0; j < currentPlacement.size(); j++)
+            for (vector<int>::size_type j = 0; j < currentPlacement.size(); j++)
             {
                 if (currentPlacement[j].value == to)
                 {
