@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include <cctype>
 #include <string>
 #include "./utils.cpp"
