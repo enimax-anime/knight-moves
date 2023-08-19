@@ -1,5 +1,14 @@
 #include "./graph.cpp"
 
+bool checkIfInRange(int num);
+vector<int> findPossibleMoves(vector<vector<int>::size_type> placement);
+Graph consturctGraph();
+vector<int> alphaNumToIndex(string placement);
+string indexToAlphaNum(vector<int> index);
+string numberToAlphaNum(int elem);
+vector<int>::size_type indexToNumber(string placement);
+auto moveFromTo(vector<int>::size_type from, int to, Graph &graph);
+
 bool checkIfInRange(int num)
 {
     if (num <= 7 && num >= 0)
@@ -12,23 +21,23 @@ bool checkIfInRange(int num)
     }
 }
 
-vector<int> findPossibleMoves(vector<int> placement)
+vector<int> findPossibleMoves(vector<vector<int>::size_type> placement)
 {
     vector<int> possibleMoves;
 
     for (int k = 0; k <= 1; k++)
     {
-        int first = (k == 0) ? 2 : 1;
-        int second = (k == 0) ? 1 : 2;
+        vector<int>::size_type first = (k == 0) ? 2 : 1;
+        vector<int>::size_type second = (k == 0) ? 1 : 2;
 
-        for (int i = 0; i <= 1; i++)
+        for (vector<int>::size_type i = 0; i <= 1; i++)
         {
-            for (int j = 0; j <= 1; j++)
+            for (vector<int>::size_type j = 0; j <= 1; j++)
             {
-                int signX = (i * 2) - 1;
-                int signY = (j * 2) - 1;
+                vector<int>::size_type signX = (i * 2) - 1;
+                vector<int>::size_type signY = (j * 2) - 1;
 
-                vector<int> positionClone = placement;
+                vector<vector<int>::size_type> positionClone = placement;
 
                 positionClone[0] += first * signX;
                 positionClone[1] += second * signY;
@@ -48,9 +57,9 @@ Graph consturctGraph()
 {
     Graph graph = Graph(64);
 
-    for (int i = 0; i <= 7; i++)
+    for (vector<int>::size_type i = 0; i <= 7; i++)
     {
-        for (int j = 0; j <= 7; j++)
+        for (vector<int>::size_type j = 0; j <= 7; j++)
         {
             vector<int> possibleMoves = findPossibleMoves({i, j});
 
@@ -97,18 +106,18 @@ string numberToAlphaNum(int elem)
     return indexToAlphaNum({elem / 8, elem % 8});
 }
 
-int indexToNumber(string placement)
+vector<int>::size_type indexToNumber(string placement)
 {
     auto result = alphaNumToIndex(placement);
     return result[0] * 8 + result[1] - 1;
 }
 
-auto moveFromTo(int from, int to, Graph &graph)
+auto moveFromTo(vector<int>::size_type from, vector<int>::size_type to, Graph &graph)
 {
     vector<Node> toCheck = graph.getElements(from);
     vector<bool> visited = vector<bool>(64, false);
     vector<int> pathTaken = vector<int>(64);
-    int start = 0;
+    vector<int>::size_type start = 0;
 
     while (true)
     {

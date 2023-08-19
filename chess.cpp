@@ -1,5 +1,6 @@
 #include <cctype>
 #include <string>
+#include <iostream>
 #include "./utils.cpp"
 
 using namespace std;
@@ -18,8 +19,8 @@ int main()
     // to an int. For example,
     // "a1" -> [0, 0] -> 0 * 8 + 0 = 0
     // "h6" -> [7, 5] -> 7 * 8 + 5 = 61
-    int from = indexToNumber(fromString);
-    int to = indexToNumber(toString);
+    vector<int>::size_type from = indexToNumber(fromString);
+    vector<int>::size_type to = indexToNumber(toString);
 
     // This vector is a map of what parent an index
     // must be approached from to get to the initial point
@@ -31,7 +32,7 @@ int main()
     // Since we are at the initial point, this is our shortest path
     vector<int> result = moveFromTo(from, to, g);
 
-    int currentValue = to;
+    vector<int>::size_type currentValue = to;
 
     while (currentValue != from)
     {

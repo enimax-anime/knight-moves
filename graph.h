@@ -1,26 +1,27 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <bits/stdc++.h>
+#include "vector"
+
 using namespace std;
 
 struct Node
 {
-    int parent;
-    int value;
+    vector<int>::size_type parent;
+    vector<int>::size_type value;
 };
 
 class Graph
 {
-    int V;
+    vector<int>::size_type V;
     vector<vector<Node>> adj;
 
 public:
-    Graph(int V);
+    Graph(vector<int>::size_type V);
 
-    void addElement(int v, int w);
+    void addElement(vector<int>::size_type v, vector<int>::size_type w);
 
-    vector<Node> getElements(int v);
+    vector<Node> getElements(vector<int>::size_type v);
 };
 
 #endif
