@@ -7,7 +7,7 @@ vector<int> alphaNumToIndex(string placement);
 string indexToAlphaNum(vector<int> index);
 string numberToAlphaNum(int elem);
 vector<int>::size_type indexToNumber(string placement);
-auto moveFromTo(vector<int>::size_type from, int to, Graph &graph);
+vector<int> moveFromTo(vector<int>::size_type from, vector<int>::size_type to, Graph &graph);
 
 bool checkIfInRange(int num)
 {
@@ -112,12 +112,22 @@ vector<int>::size_type indexToNumber(string placement)
     return result[0] * 8 + result[1] - 1;
 }
 
-auto moveFromTo(vector<int>::size_type from, vector<int>::size_type to, Graph &graph)
+vector<int> moveFromTo(vector<int>::size_type from, vector<int>::size_type to, Graph &graph)
 {
     vector<Node> toCheck = graph.getElements(from);
     vector<bool> visited = vector<bool>(64, false);
     vector<int> pathTaken = vector<int>(64);
     vector<int>::size_type start = 0;
+
+    visited[from] = true;
+    for(Node node : toCheck){
+        pathTaken[node.value] = node.parent;
+        visited[node.value] = true;
+
+        if(node.value == to){
+            return pathTaken;
+        }
+    }
 
     while (true)
     {

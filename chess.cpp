@@ -5,15 +5,37 @@
 
 using namespace std;
 
+void test()
+{
+    for (int i = 0; i <= 63; i++)
+    {
+        for (int j = 0; j <= 63; j++)
+        {
+            cout << i << " " << j << endl;
+            Graph g = consturctGraph();
+            vector<int> result = moveFromTo(i, j, g);
+            vector<int>::size_type currentValue = j;
+
+            while (currentValue != i)
+            {
+                cout << numberToAlphaNum(currentValue) << endl;
+                currentValue = result[currentValue];
+            }
+
+            cout << numberToAlphaNum(i) << endl;
+        }
+    }
+}
+
 int main()
-{   
+{
     // Populate the graph with every possible
     // move
     Graph g = consturctGraph();
 
     // The initial and final position of the knight
     string fromString = "a1";
-    string toString = "h6";
+    string toString = "c2";
 
     // Converting the alphanumeric position
     // to an int. For example,
@@ -36,11 +58,12 @@ int main()
 
     while (currentValue != from)
     {
-        cout << (currentValue) << endl;
+        cout << numberToAlphaNum(currentValue) << endl;
         currentValue = result[currentValue];
     }
 
-    cout << (from) << endl;
+    cout << numberToAlphaNum(from) << endl;
 
+    test();
     return 0;
 }
